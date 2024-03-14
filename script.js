@@ -5,7 +5,15 @@ function setup() {
 	height = 600
 	width = 600
 	createCanvas(600, 600);
-	background(0);
+	c1 = color(0);
+	c2 = color(30, 0, 50);
+
+	for (let y = 0; y < height; y++) {
+		n = map(y, 0, height, 0, 1);
+		let newc = lerpColor(c1, c2, n);
+		stroke(newc);
+		line(0, y, width, y);
+	}
 
 	colorMode(HSB, 250);
 	d = PI / 4;
@@ -32,7 +40,7 @@ function draw() {
 	var c = color((frameCount / 2) % 250, 200, 250, 200);
 	stroke(c);
 	drawingContext.shadowBlur = 100
-	drawingContext.shadowColor = color(255, 255, 0)
+	drawingContext.shadowColor = color(190, 150, 180)
 	line(preX, preY, x, y);
 
 	pop()
